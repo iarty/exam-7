@@ -1,11 +1,12 @@
-import React, { Component } from 'react'
+import React from 'react'
+import MenuItems from './menuItem/menuitem'
 
-export default class menu extends Component {
-  render() {
-    return (
-      <div>
-
-      </div>
-    )
-  }
+const menu = (props) => {
+  return (
+    <div className="col-8">
+      <MenuItems menuItemsArr={props.MenuItemsArr} />
+    </div>
+  )
 }
+
+export default menu;
