@@ -1,10 +1,15 @@
 import React from 'react'
 import MenuItems from './menuItem/menuitem'
 
-const menu = (props) => {
+const menu = ({ MenuItemsArr, addToOrderList }) => {
   return (
     <div className="col-8">
-      <MenuItems menuItemsArr={props.MenuItemsArr} addToOrderList={props.addToOrderList}/>
+      <div>
+        <h4>Menu list:</h4>
+      </div>
+      <div className="border border-dark rounded d-flex flex-wrap p-3">
+        {MenuItemsArr.map((el, i) => <MenuItems key={i} dataItems={el} addToOrderList={addToOrderList} />)}
+      </div>
     </div>
   )
 }

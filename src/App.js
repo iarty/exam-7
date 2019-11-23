@@ -21,23 +21,17 @@ export default class App extends Component {
     toOrderList: [],
   }
 
-  addToOrderList = (index) => {
+  addToOrderList = (data) => {
     const toOrderList = this.state.toOrderList;
-    const newIndex = toOrderList.findIndex(el => el.name === menuItemsArr[index].name)
-    if (newIndex === -1) {
-      toOrderList.push(menuItemsArr[index])
-      this.setState({ toOrderList })
+    if (toOrderList.findIndex(el => el.name === data.name) === -1) {
+      this.setState(prevState => prevState.toOrderList.push(data))
     } else {
-      toOrderList[newIndex].value++
-      this.setState({ toOrderList })
+      this.setState(prevState => prevState.toOrderList.map(el => el.name === data.name ? { ...el, ...el.value++ } : el))
     }
   }
 
   removeItem = (name) => {
-    const toOrderList = this.state.toOrderList;
-    const index = toOrderList.findIndex(el => el.name === name)
-    toOrderList.splice(index, 1);
-    this.setState({ toOrderList })
+    this.setState({ toOrderList: this.state.toOrderList.filter(el => el.name !== name) })
   }
 
   render() {

@@ -1,15 +1,22 @@
 import React from 'react';
-import Card from './card/card'
+import { MDBBtn, MDBCard, MDBCardBody, MDBCardImage, MDBCardTitle, MDBCardText, MDBCol } from 'mdbreact';
 
-export default function menuitem({ menuItemsArr, addToOrderList }) {
+const menuItem = ({ dataItems, addToOrderList }) => {
+  const data = { ...dataItems }
   return (
-    <div>
-      <div>
-        <h4>Menu list:</h4>
-      </div>
-      <div className="border border-dark rounded d-flex flex-wrap p-3">
-        {menuItemsArr.map((el, i) => <Card key={i} dataItems={el} addToOrderList={addToOrderList} index={i}/>)}
-      </div>
-    </div>
+    <MDBCol className="mb-5">
+      <MDBCard style={{ width: "16rem", height: 260 }}>
+        <MDBCardImage className="img-fluid" src={dataItems.image} waves />
+        <MDBCardBody>
+          <MDBCardTitle>{dataItems.name}</MDBCardTitle>
+          <MDBCardText>
+            <span className="font-weight-bold">Price: {dataItems.price} KGS</span>
+          </MDBCardText>
+          <MDBBtn href="#" onClick={() => addToOrderList(data)}>Add</MDBBtn>
+        </MDBCardBody>
+      </MDBCard>
+    </MDBCol>
   )
 }
+
+export default menuItem;
