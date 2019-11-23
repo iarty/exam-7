@@ -13,7 +13,7 @@ const menuItemsArr = [
   { name: 'Coffee', price: 20, image: coffeeImg },
   { name: 'Pizza', price: 320, image: pizzaImg },
   { name: 'Rolls', price: 180, image: rollsImg },
-  { name: 'Cola', price: 4., image: colaImg },
+  { name: 'Cola', price: 40, image: colaImg },
 ]
 export default class App extends Component {
   state = {}
