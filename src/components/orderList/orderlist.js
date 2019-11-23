@@ -3,7 +3,7 @@ import OrderListItem from './orderListItem/orderlistitem';
 import { MDBListGroup } from "mdbreact";
 
 
-export default function orderlist({ DataItem }) {
+export default function orderlist({ DataItem, removeItem }) {
   let totalPrice = 0;
   DataItem.forEach(element => {
     totalPrice += element.price * element.value
@@ -13,12 +13,14 @@ export default function orderlist({ DataItem }) {
       <div>
         <h3>Order Details:</h3>
       </div>
-      <div className="border border-dark rounded p-3">
-        <MDBListGroup className="my-4 mx-4" style={{ width: "22rem" }}>
-          {DataItem.map((el, i) => <OrderListItem key={i} DataItem={el} />)}
-        </MDBListGroup>
-        <hr />
-        <span>total price: {totalPrice} KGS</span>
+      <div className="border border-dark rounded p-3" style={{width:330}}>
+        {!DataItem.length ? <span style={{ fontSize: 18, fontWeight: 'bold' }}>Order is empty!<br />
+          Please add some items!</span> :
+          [<MDBListGroup key='k1' className="my-4 mx-4" style={{ width: "22rem" }}>
+            {DataItem.map((el, i) => <OrderListItem key={i} removeItem={removeItem} DataItem={el} />)}
+          </MDBListGroup>,
+          <hr key='k2' />,
+          <span key='k3'>Total price: {totalPrice} KGS</span>]}
       </div>
     </div>
   )

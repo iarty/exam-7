@@ -19,7 +19,6 @@ const menuItemsArr = [
 export default class App extends Component {
   state = {
     toOrderList: [],
-    totalPrice: null
   }
 
   addToOrderList = (index) => {
@@ -33,14 +32,19 @@ export default class App extends Component {
       this.setState({ toOrderList })
     }
   }
-  totalPrice = () => {
 
+  removeItem = (name) => {
+    const toOrderList = this.state.toOrderList;
+    const index = toOrderList.findIndex(el => el.name === name)
+    toOrderList.splice(index, 1);
+    this.setState({ toOrderList })
   }
+
   render() {
     return (
       <div className="container" >
         <div className="row">
-          <OrderList DataItem={this.state.toOrderList} />
+          <OrderList removeItem={this.removeItem} DataItem={this.state.toOrderList} />
           <Menu MenuItemsArr={menuItemsArr} addToOrderList={this.addToOrderList} />
         </div>
       </div>

@@ -4,8 +4,7 @@ import { MDBCloseIcon } from "mdbreact"
 
 
 
-export default function orderlistitem({ DataItem }) {
-  // console.log(DataItem)
+export default function orderlistitem({ DataItem, removeItem }) {
   return (
     <MDBListGroupItem color="warning d-flex justify-content-between">
       <div>
@@ -13,7 +12,7 @@ export default function orderlistitem({ DataItem }) {
       </div>
       <div>
         <span>{DataItem.price * DataItem.value}</span>&nbsp;&nbsp;
-        <MDBCloseIcon />
+        <MDBCloseIcon onClick={() => removeItem(DataItem.name)} />
       </div>
     </MDBListGroupItem>
   )
