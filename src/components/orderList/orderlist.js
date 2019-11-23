@@ -11,7 +11,7 @@ export default function orderlist({ DataItem, removeItem }) {
   return (
     <div>
       <div>
-        <h3>Order Details:</h3>
+        <h4>Order Details:</h4>
       </div>
       <div className="border border-dark rounded p-3" style={{width:330}}>
         {!DataItem.length ? <span style={{ fontSize: 18, fontWeight: 'bold' }}>Order is empty!<br />
